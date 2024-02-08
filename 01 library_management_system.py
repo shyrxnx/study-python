@@ -89,3 +89,9 @@ while True:
         break
     else:
         print("\nInvalid choice!\n")
+
+'''
+I made this project first in C++ in preparation for my Final exam in Computer 
+Programming I. I decided to recreate this project in Python to test my understanding
+of arrays and functions.
+'''
