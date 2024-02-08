@@ -1,5 +1,9 @@
 import random
 
+"""
+This is Rock, Paper, Scissor, Lizard, Spock without using functions or dictionaries
+"""
+
 computer = random.randint(0, 5)
 
 Rock = 0
