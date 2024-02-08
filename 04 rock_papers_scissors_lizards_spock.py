@@ -1,7 +1,7 @@
 import random
 
 """
-This is Rock, Paper, Scissor, Lizard, Spock without using functions or dictionaries
+This is Rock, Paper, Scissor, Lizard, Spock without using functions and dictionaries
 """
 
 computer = random.randint(0, 5)
