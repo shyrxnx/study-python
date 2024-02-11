@@ -77,3 +77,5 @@ elif orig['top-r'] == orig['mid-c'] == orig['bot-l'] == "LOL":
     print("You won!")
 else:
     print("Something is wrong")
+
+# This is for the winner logic
