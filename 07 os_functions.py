@@ -45,3 +45,8 @@ print(total_size)
 
 # Check what OS you are running
 print(platform.system())
+
+# Opens a text file (tried using docx but returns an error, apparently can't do it so you need external lib like docx2txt)
+open_practice = open(r"C:\Users\Shyrine\Downloads\os_open_practice.txt")
+content = open_practice.read()
+print(content)
