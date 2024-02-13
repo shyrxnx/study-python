@@ -1,81 +1,92 @@
-# Define the initial board state
-board = {
-    'Top-L': " ",
-    'Top-M': " ",
-    'Top-R': " ",
-    'Mid-L': " ",
-    'Mid-M': " ",
-    'Mid-R': " ",
-    'Bot-L': " ",
-    'Bot-M': " ",
-    'Bot-R': " "
+original = {
+    'top-l': " ",
+    'top-m': " ",
+    'top-r': " ",
+    'mid-l': " ",
+    'mid-m': " ",
+    'mid-r': " ",
+    'bot-l': " ",
+    'bot-m': " ",
+    'bot-r': " "
 }
 
-# Function to print the board
-def print_board(board):
-    print(f"| {board['Top-L']} | {board['Top-M']} | {board['Top-R']} |")
+
+def pretty_board(board):
+    print("=============")
+    print(f"| {board['top-l']} | {board['top-m']} | {board['top-r']} |")
     print("====+===+====")
-    print(f"| {board['Mid-L']} | {board['Mid-M']} | {board['Mid-R']} |")
+    print(f"| {board['mid-l']} | {board['mid-m']} | {board['mid-r']} |")
     print("====+===+====")
-    print(f"| {board['Bot-L']} | {board['Bot-M']} | {board['Bot-R']} |")
+    print(f"| {board['bot-l']} | {board['bot-m']} | {board['bot-r']} |")
+    print("=============")
 
 
-def check_winner(board):
-    # Check rows, columns, and diagonals for a winner
-    for row in ['Top', 'Mid', 'Bot']:
-        if board[f'{row}-L'] == board[f'{row}-M'] == board[f'{row}-R'] != " ":
-            return True
-    for col in ['L', 'M', 'R']:
-        if board[f'Top-{col}'] == board[f'Mid-{col}'] == board[f'Bot-{col}'] != " ":
-            return True
-    if board['Top-L'] == board['Mid-M'] == board['Bot-R'] != " ":
-        return True
-    if board['Top-R'] == board['Mid-M'] == board['Bot-L'] != " ":
-        return True
-    return False
-
-
-def is_board_full(board):
-    return " " not in board.values()
-
-
-# Function to get player's character choice (X or O)
-def char_use():
+def symbol_usage():
     while True:
-        character_1 = input(
-            "Pick your character (X or O): ").upper()  # Convert input to uppercase for case-insensitivity
-        if character_1 == 'X' or character_1 == 'O':
-            character_2 = 'O' if character_1 == 'X' else 'X'  # Set the second player's character opposite to the first player's
-            break
+        symbol = input("Do you want to be X or O?\nEnter choice: ").upper()
+        if symbol in ['X', 'O']:
+            print(f"Player 1, you are {symbol}.")
+            print(f"Player 2, you are {'O' if symbol == 'X' else 'X'}.")
+            return symbol, 'O' if symbol == 'X' else 'X'
         else:
-            print("Invalid input! Choose only from X or O")
-    return character_1, character_2
+            print("Invalid choice of symbol! Choose only from X or O")
 
 
-# Get characters for players
-character_1, character_2 = char_use()
-
-# Game loop
-while True:
-    # Player's choice input
-    choice = input("Enter choice (Top, Mid, Bot and - and L, M, R): ").title()  # Capitalize the input for consistency
-    if choice in board and board[choice] == " ":  # Check if the choice is valid and the cell is empty
-        board[choice] = character_1  # Set the player's character to the chosen cell
+def check_for_winner(board, player):
+    if board['top-l'] == board['top-m'] == board['top-r'] == player:
+        print(f"{player} won! ")
+        return True
+    elif board['mid-l'] == board['mid-m'] == board['mid-r'] == player:
+        print(f"{player} won! ")
+        return True
+    elif board['bot-l'] == board['bot-m'] == board['bot-r'] == player:
+        print(f"{player} won! ")
+        return True
+    elif board['top-l'] == board['mid-l'] == board['bot-l'] == player:
+        print(f"{player} won! ")
+        return True
+    elif board['top-m'] == board['mid-m'] == board['bot-m'] == player:
+        print(f"{player} won! ")
+        return True
+    elif board['top-r'] == board['mid-r'] == board['bot-r'] == player:
+        print(f"{player} won! ")
+        return True
+    elif board['top-l'] == board['mid-m'] == board['bot-r'] == player:
+        print(f"{player} won! ")
+        return True
+    elif board['top-r'] == board['mid-m'] == board['bot-l'] == player:
+        print(f"{player} won! ")
+        return True
+    elif " " not in board.values():
+        print("The boards are all filled. It's a tie!")
+        return True
     else:
-        print("Invalid choice or cell already occupied. Please try again.")
-        continue
+        return False
 
-    # Print the updated board
-    print_board(board)
 
-    # Check for a win or draw condition
-    if check_winner(board):
-        print(f"Congratulations! {character_1} wins!")
-        break  # End the game if there's a winner
+pretty_board(original)
 
-    if is_board_full(board):
-        print("It's a tie!")
-        break  # End the game if the board is full and there's no winner
+symbol_one, symbol_two = symbol_usage()
 
-    # Swap characters for the next player's turn
-    character_1, character_2 = character_2, character_1
+count = 0
+while not check_for_winner(original, symbol_one) and not check_for_winner(original, symbol_two):
+    if count % 2 == 0:
+        player = "Player 1"
+        character = symbol_one
+        position = input(f"{player}, choose your position (e.g., top-l, mid-m, etc.): ")
+        if position in original and original[position] == " ":
+            original[position] = character
+            count += 1
+            pretty_board(original)
+        else:
+            print("Invalid choice or cell already occupied. Please try again.")
+    elif count % 2 != 0:
+        player = "Player 2"
+        character = symbol_two
+        position = input(f"{player}, choose your position (e.g., top-l, mid-m, etc.): ")
+        if position in original and original[position] == " ":
+            original[position] = character
+            count += 1
+            pretty_board(original)
+        else:
+            print("Invalid choice or cell already occupied. Please try again.")
