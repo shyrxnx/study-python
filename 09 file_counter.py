@@ -29,7 +29,3 @@ if check_if_folder():
     print("The path is a folder")
 else:
     print("The path is a file")
-
-
-def check_if_folder(folder_path):
-    return os.path.isdir(folder_path)
