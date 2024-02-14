@@ -29,5 +29,3 @@ root_path = r"..\..\Desktop"
 
 for folder in folder_names:
     os.makedirs(os.path.join(r"C:\Users\Shyrine\Desktop", folder))
-
-
