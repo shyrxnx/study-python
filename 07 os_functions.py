@@ -50,3 +50,10 @@ print(platform.system())
 open_practice = open(r"C:\Users\Shyrine\Downloads\os_open_practice.txt")
 content = open_practice.read()
 print(content)
+
+
+# Walk the directory tree
+for main_folder, sub_folder, filename in os.walk(r"C:\Users\Shyrine\Downloads\JPCS Picture Layouts"):
+    print(f"The main folder is: {main_folder}")
+    print(f"The sub folders are: {sub_folder}")
+    print(f"The file names are: {filename}")
