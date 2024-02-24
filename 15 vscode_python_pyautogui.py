@@ -18,3 +18,4 @@ pyautogui.press('enter', interval=1.0)
 pyautogui.press('f5', interval=1.0)
 pyautogui.press('enter')
 pyautogui.press('f5', interval=1.0)
+
