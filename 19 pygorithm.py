@@ -1,3 +1,3 @@
-from pygorithm.searching import binary_search
-code = binary_search.get_code()
+from pygorithm.data_structures import linked_list
+code = linked_list.SinglyLinkedList.get_code()
 print(code)
