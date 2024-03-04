@@ -11,4 +11,3 @@ print(fruits)
 # Sorts the array in reverse alphabetical order
 fruits.sort(reverse=True)
 print(fruits)
-
