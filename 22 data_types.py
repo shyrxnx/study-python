@@ -2,10 +2,11 @@
 
 name = input("Enter your name: ")
 print(f"Hello {name}")
-print(type(name)) # Checks the data type
+
+# Checks the data type
+print(type(name))
 
 # Example No. 2
 num1 = input("Enter number 1: ")
 print(type(num1))
 # This will output a string
-
