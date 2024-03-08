@@ -5,3 +5,5 @@
 # Stacks
 
 # Queue
+
+# Dictionary
